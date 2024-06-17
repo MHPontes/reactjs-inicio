@@ -2,11 +2,41 @@ import React from 'react';
 
 // const Bemvindo = () => <h2>Bem-vindo(a)</h2>
 
-const Bemvindo = (props) => {
+// const Bemvindo = (props) => {
+//   return (
+//     <div>
+//       <h2>Bem-vindo(a) {props.nome} </h2>
+//       <h3>Tenho {props.idade} Anos</h3>
+//     </div>
+//   );
+// }
+
+const Equipe = (props) => {
   return (
     <div>
-      <h2>Bem-vindo(a) {props.nome} </h2>
-      <h3>Tenho {props.idade} Anos</h3>
+      <Sobre username={props.nome} cargo={props.cargo} idade={props.idade}/>
+      <Social fb={props.facebook}/>  {/* //Chama o componente Social */}
+      <hr/>  {/* //Adiciona uma linha horizontal */}
+    </div>
+  );
+}
+
+const Sobre = (props) => {
+  return (
+    <div>
+      <h2>Olá, eu sou {props.username}</h2>
+      <h3>Cargo: {props.cargo}</h3>
+      <h3>Idade: {props.idade}</h3>
+    </div>
+  );
+}
+
+const Social = (props) => {
+  return (
+    <div>
+      <a href={props.fb}>Facebook</a>
+      <a>LinkedIn</a>
+      <a>YouTube</a>
     </div>
   );
 }
@@ -14,10 +44,11 @@ const Bemvindo = (props) => {
 function App() {
   return (
     <div>
-      Olá, mundo!
-      <Bemvindo nome="Mateus" idade="29"/>
-      <Bemvindo nome="Joana" idade="19"/>
-      <h1>Curso React</h1>
+      <h1>Conheça nossa equipe:</h1>
+      <Equipe nome="Lucas" cargo="Programador" idade="23"
+      facebook="https://google.com"/>
+      <Equipe nome="João" cargo="Designer" idade="25"/>
+      <Equipe nome="Pedro" cargo="Front-End" idade="20"/>
     </div>
   );
 }
