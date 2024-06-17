@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 // const Bemvindo = () => <h2>Bem-vindo(a)</h2>
 
@@ -11,25 +11,25 @@ import React from 'react';
 //   );
 // }
 
-const Equipe = (props) => {
-  return (
-    <div>
-      <Sobre username={props.nome} cargo={props.cargo} idade={props.idade}/>
-      <Social fb={props.facebook}/>  {/* //Chama o componente Social */}
-      <hr/>  {/* //Adiciona uma linha horizontal */}
-    </div>
-  );
-}
+// const Equipe = (props) => {
+//   return (
+//     <div>
+//       <Sobre username={props.nome} cargo={props.cargo} idade={props.idade}/>
+//       <Social fb={props.facebook}/>  {/* //Chama o componente Social */}
+//       <hr/>  {/* //Adiciona uma linha horizontal */}
+//     </div>
+//   );
+// }
 
-const Sobre = (props) => {
-  return (
-    <div>
-      <h2>Olá, eu sou {props.username}</h2>
-      <h3>Cargo: {props.cargo}</h3>
-      <h3>Idade: {props.idade}</h3>
-    </div>
-  );
-}
+// const Sobre = (props) => {
+//   return (
+//     <div>
+//       <h2>Olá, eu sou {props.username}</h2>
+//       <h3>Cargo: {props.cargo}</h3>
+//       <h3>Idade: {props.idade}</h3>
+//     </div>
+//   );
+// }
 
 const Social = (props) => {
   return (
@@ -39,6 +39,31 @@ const Social = (props) => {
       <a>YouTube</a>
     </div>
   );
+}
+
+class Equipe extends Component{
+  render(){
+    return (
+      <div>
+        <Sobre username={this.props.nome} cargo={this.props.cargo} idade={this.props.idade}/>
+        <Social fb={this.props.facebook}/>  {/* //Chama o componente Social */}
+        <hr/>  {/* //Adiciona uma linha horizontal */}
+      </div>
+    );
+  }
+}
+
+class Sobre extends Component{
+  render(){
+    return (
+      <div>
+        <h2>Olá, eu sou {this.props.username}</h2>
+        <h3>Cargo: {this.props.cargo}</h3>
+        <h3>Idade: {this.props.idade}</h3>
+      </div>
+    );
+  }
+
 }
 
 function App() {
