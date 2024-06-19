@@ -1,61 +1,116 @@
 import React, { Component } from 'react';
+import './estilo.css';
 // import Feed from './components/Feed';
 // import Membro from './components/Membro';
 
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      form: {
-        nome: '',
-        email: '',
-        senha: '',
-        sexo: 'masculino'
-      }
-    };
+      textoFrase: ''
+    }
+    this.frases = [
+      'Siga os bons e aprenda com eles.',
+      'O bom-senso vale mais do que muito conhecimento.',
+      'O riso é a menor distância entre duas pessoas.',
+      'Deixe de lado as preocupações e seja feliz.',
+      'Realize o óbvio, pense no improvável e conquiste o impossível.',
+      'Acredite em milagres, mas não dependa deles.',
+      'A maior barreira para o sucesso é o medo do fracasso.'
+    ];
 
-    this.dadosForm = this.dadosForm.bind(this);
+    this.quebraBiscoito = this.quebraBiscoito.bind(this);
 
   }
 
-  dadosForm(e) {
-    let form = this.state.form;
-    form[e.target.name] = e.target.value;
-    this.setState({ form: form });
+  quebraBiscoito() {
+    let state = this.state;
+    let numeroAleatorio = Math.floor(Math.random() * this.frases.length);  //Gera um número aleatório
+    state.textoFrase = '"' + this.frases[numeroAleatorio] + '"'; //Atualiza o estado com a frase
+    this.setState(state)
   }
 
 
   render() {
     return (
+      <div className="container">
+        <img src={require('./assets/biscoito.png')} className="img" />
+        <Botao nome="Abrir biscoito" acaoBtn={this.quebraBiscoito} />
+        <h3 className="textoFrase" >{this.state.textoFrase}</h3>
+      </div>
+    );
+
+  }
+}
+
+class Botao extends Component {
+  render() {
+    return (
       <div>
-        <h2>Login</h2>
-  
-          <label>Nome:</label>
-          <input type="text" name="nome" value={this.state.form.nome}
-            onChange={this.dadosForm} />
-          <br />
-          <label>Email:</label>
-          <input type="email" name="email" value={this.state.form.email}
-            onChange={this.dadosForm} />
-          <br />
-          <label>Senha:</label>
-          <input type="password" name="senha" value={this.state.form.senha}
-            onChange={this.dadosForm} />
-          <br />
-          Sexo:
-          <select name="sexo" value={this.state.form.sexo}
-            onChange={this.dadosForm}>
-            <option value="masculino">Masculino</option>
-            <option value="feminino">Feminino</option>
-          </select>
-        
+        <button onClick={this.props.acaoBtn}>{this.props.nome}</button>
       </div>
     );
   }
-
 }
 
+
 export default App;
+
+// class App extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       form: {
+//         nome: '',
+//         email: '',
+//         senha: '',
+//         sexo: 'masculino'
+//       }
+//     };
+
+//     this.dadosForm = this.dadosForm.bind(this);
+
+//   }
+
+//   dadosForm(e) {
+//     let form = this.state.form;
+//     form[e.target.name] = e.target.value;
+//     this.setState({ form: form });
+//   }
+
+
+//   render() {
+//     return (
+//       <div>
+//         <h2>Login</h2>
+  
+//           <label>Nome:</label>
+//           <input type="text" name="nome" value={this.state.form.nome}
+//             onChange={this.dadosForm} />
+//           <br />
+//           <label>Email:</label>
+//           <input type="email" name="email" value={this.state.form.email}
+//             onChange={this.dadosForm} />
+//           <br />
+//           <label>Senha:</label>
+//           <input type="password" name="senha" value={this.state.form.senha}
+//             onChange={this.dadosForm} />
+//           <br />
+//           Sexo:
+//           <select name="sexo" value={this.state.form.sexo}
+//             onChange={this.dadosForm}>
+//             <option value="masculino">Masculino</option>
+//             <option value="feminino">Feminino</option>
+//           </select>
+        
+//       </div>
+//     );
+//   }
+
+// }
+
+// export default App;
 
 
 
